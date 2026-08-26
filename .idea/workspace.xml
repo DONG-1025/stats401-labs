@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bab5b6a0-09cb-40d5-be7e-16494df4d53e" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab1/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab10/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab10/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab6/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab7/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab7/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab8/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab8/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab9/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab9/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="3IRixcMl5hO9g2M2AKKVJO1ZkbI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="bab5b6a0-09cb-40d5-be7e-16494df4d53e" name="更改" comment="" />
+      <created>1787734033055</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1787734033055</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -3,7 +3,7 @@ console.log("D3 version:", d3.version);
 async function loadDataAndDraw() {
     try {
         const data = await d3.csv(
-            "data/students.csv",
+            "../data/students.csv",
             d => ({
                 name: d.name,
                 score: +d.score
@@ -17,6 +17,8 @@ async function loadDataAndDraw() {
         const height = 400;
         const innerWidth = width - margin.left - margin.right;
         const innerHeight = height - margin.top - margin.bottom;
+
+        d3.select("#chart").html("");
 
         const svg = d3.select("#chart")
             .append("svg")
