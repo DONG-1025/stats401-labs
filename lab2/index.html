@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 2</title>
+    <title>Lab 2 - Multivariate Visualization</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
 
-    <nav class="lab-nav">
-        <a href="../lab1/index.html">Lab 1</a>
-        <a href="../lab2/index.html">Lab 2</a>
-        <a href="../lab3/index.html">Lab 3</a>
-        <a href="../lab4/index.html">Lab 4</a>
-        <a href="../lab5/index.html">Lab 5</a>
-        <a href="../lab6/index.html">Lab 6</a>
-        <a href="../lab7/index.html">Lab 7</a>
-        <a href="../lab8/index.html">Lab 8</a>
-        <a href="../lab9/index.html">Lab 9</a>
-        <a href="../lab10/index.html">Lab 10</a>
-    </nav>
+<nav class="lab-nav">
+    <a href="../lab1/index.html">Lab 1</a>
+    <a href="../lab2/index.html">Lab 2</a>
+    <a href="../lab3/index.html">Lab 3</a>
+    <a href="../lab4/index.html">Lab 4</a>
+    <a href="../lab5/index.html">Lab 5</a>
+    <a href="../lab6/index.html">Lab 6</a>
+    <a href="../lab7/index.html">Lab 7</a>
+    <a href="../lab8/index.html">Lab 8</a>
+    <a href="../lab9/index.html">Lab 9</a>
+    <a href="../lab10/index.html">Lab 10</a>
+</nav>
 
-    <a href="../index.html">← Back to Home</a>
+<a href="../index.html">← Back to Home</a>
 
-    <h1>Lab 2</h1>
+<h1>Lab 2: Multivariate Visualization with D3</h1>
 
-    <p>Lab 2 will be added here.</p>
+<p>
+    This visualization explores the relationship among
+    population, temperature, development level, and region.
+</p>
+
+<div id="chart"></div>
+<div id="tooltip" class="tooltip"></div>
+
+<hr>
+
+<h2>Design Justification</h2>
+
+<p>
+    <strong>Mapping choices:</strong><br>
+    • Population → x-position (ratio variable)<br>
+    • Temperature → y-position (interval variable)<br>
+    • Development Level → size (ordinal: Low &lt; Medium &lt; High)<br>
+    • Region → color (nominal: North, South, East, West)
+</p>
+
+<p>
+    <strong>Reasoning:</strong><br>
+    I chose this mapping because the x and y axes naturally represent continuous numerical data,
+    making it easy to see relationships between population and temperature.
+    Using size for development level visually emphasizes the ordinal hierarchy,
+    while color clearly distinguishes the four regions.
+    This design allows viewers to quickly identify patterns and outliers.
+</p>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="lab2.js"></script>
 
 </body>
-
 </html>
