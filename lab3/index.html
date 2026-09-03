@@ -1,34 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 3</title>
+    <title>Lab 3 - Web Data Acquisition</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        #data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        #data-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            cursor: pointer;
+            user-select: none;
+        }
+        #data-table th:hover {
+            background: #34495e;
+        }
+        #data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        #data-table tr:hover {
+            background: #f5f5f5;
+        }
+        .sort-indicator {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .dataset-info {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .dataset-info strong {
+            color: #2c3e50;
+        }
+    </style>
 </head>
-
 <body>
 
-    <nav class="lab-nav">
-        <a href="../lab1/index.html">Lab 1</a>
-        <a href="../lab2/index.html">Lab 2</a>
-        <a href="../lab3/index.html">Lab 3</a>
-        <a href="../lab4/index.html">Lab 4</a>
-        <a href="../lab5/index.html">Lab 5</a>
-        <a href="../lab6/index.html">Lab 6</a>
-        <a href="../lab7/index.html">Lab 7</a>
-        <a href="../lab8/index.html">Lab 8</a>
-        <a href="../lab9/index.html">Lab 9</a>
-        <a href="../lab10/index.html">Lab 10</a>
-    </nav>
+<nav class="lab-nav">
+    <a href="../lab1/index.html">Lab 1</a>
+    <a href="../lab2/index.html">Lab 2</a>
+    <a href="../lab3/index.html">Lab 3</a>
+    <a href="../lab4/index.html">Lab 4</a>
+    <a href="../lab5/index.html">Lab 5</a>
+    <a href="../lab6/index.html">Lab 6</a>
+    <a href="../lab7/index.html">Lab 7</a>
+    <a href="../lab8/index.html">Lab 8</a>
+    <a href="../lab9/index.html">Lab 9</a>
+    <a href="../lab10/index.html">Lab 10</a>
+</nav>
 
-    <a href="../index.html">← Back to Home</a>
+<a href="../index.html">← Back to Home</a>
 
-    <h1>Lab 3</h1>
+<h1>Lab 3: Web Data Acquisition with Python</h1>
 
-    <p>Lab 3 will be added here.</p>
+<p>
+    This lab demonstrates acquiring data from the web using Python,
+    then displaying it as a sortable table on this webpage.
+</p>
+
+<div class="dataset-info">
+    <strong>Dataset:</strong> Books from Books to Scrape<br>
+    <strong>Source:</strong> <a href="https://books.toscrape.com/" target="_blank">books.toscrape.com</a><br>
+    <strong>Method:</strong> HTML scraping with <code>requests</code> + <code>BeautifulSoup</code><br>
+    <strong>Records collected:</strong> <span id="record-count">Loading...</span>
+</div>
+
+<div id="table-container">
+    <table id="data-table">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="lab3.js"></script>
 
 </body>
-
 </html>
