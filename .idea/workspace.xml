@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bab5b6a0-09cb-40d5-be7e-16494df4d53e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/lab3/lab3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab3/scrape_books.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab4/clean_tweets.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab4/lab4.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab4/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +41,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.1.executor": "Run",
     "Python.scrape_books.executor": "Run",
     "Python.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
