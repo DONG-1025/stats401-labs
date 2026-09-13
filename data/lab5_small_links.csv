@@ -1,0 +1,13 @@
+source,target,weight,type
+n1,n2,8,collaboration
+n1,n3,5,collaboration
+n1,n5,9,advice
+n2,n7,6,collaboration
+n3,n4,7,communication
+n4,n8,4,communication
+n5,n6,8,advice
+n5,n9,7,collaboration
+n6,n10,5,communication
+n7,n10,6,advice
+n8,n9,4,collaboration
+n9,n10,3,communication

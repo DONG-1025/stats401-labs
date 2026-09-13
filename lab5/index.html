@@ -1,34 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 5</title>
+    <title>Lab 5 - Interactive Network Visualization</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .tooltip {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            background: white;
+            border: 1px solid #aaa;
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 100;
+        }
+        .network-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .matrix-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .legend-box {
+            display: inline-block;
+            margin: 10px 20px 10px 0;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        .legend-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 4px 0;
+            font-size: 13px;
+        }
+        .legend-item span {
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .design-section {
+            background: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+        .design-section h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .question-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .question-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        .question-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        .question-table tr:hover {
+            background: #f5f5f5;
+        }
+    </style>
 </head>
-
 <body>
 
-    <nav class="lab-nav">
-        <a href="../lab1/index.html">Lab 1</a>
-        <a href="../lab2/index.html">Lab 2</a>
-        <a href="../lab3/index.html">Lab 3</a>
-        <a href="../lab4/index.html">Lab 4</a>
-        <a href="../lab5/index.html">Lab 5</a>
-        <a href="../lab6/index.html">Lab 6</a>
-        <a href="../lab7/index.html">Lab 7</a>
-        <a href="../lab8/index.html">Lab 8</a>
-        <a href="../lab9/index.html">Lab 9</a>
-        <a href="../lab10/index.html">Lab 10</a>
-    </nav>
+<nav class="lab-nav">
+    <a href="../lab1/index.html">Lab 1</a>
+    <a href="../lab2/index.html">Lab 2</a>
+    <a href="../lab3/index.html">Lab 3</a>
+    <a href="../lab4/index.html">Lab 4</a>
+    <a href="../lab5/index.html">Lab 5</a>
+    <a href="../lab6/index.html">Lab 6</a>
+    <a href="../lab7/index.html">Lab 7</a>
+    <a href="../lab8/index.html">Lab 8</a>
+    <a href="../lab9/index.html">Lab 9</a>
+    <a href="../lab10/index.html">Lab 10</a>
+</nav>
 
-    <a href="../index.html">← Back to Home</a>
+<a href="../index.html">← Back to Home</a>
 
-    <h1>Lab 5</h1>
+<h1>Lab 5: Interactive Network Visualization</h1>
 
-    <p>Lab 5 will be added here.</p>
+<p>
+    This page presents an urban transit network of 50 stations and 50 direct connections.
+    The network is visualized in two ways: as an interactive force-directed node-link diagram
+    and as an adjacency matrix.
+</p>
+
+<div class="design-section">
+    <h2>Dataset Description</h2>
+    <p>
+        <strong>Dataset:</strong> Synthetic Urban Transit Network<br>
+        <strong>Stations:</strong> 50<br>
+        <strong>Direct connections:</strong> 50<br>
+        <strong>Node variables:</strong> district, daily_passengers, station_type<br>
+        <strong>Link variables:</strong> travel_time_min, route_type<br>
+        <strong>Districts:</strong> Central, North, South, East, West
+    </p>
+</div>
+
+<h2>1. Node-Link Visualization</h2>
+
+<div class="network-container">
+    <div id="chart"></div>
+</div>
+
+<div class="design-section">
+    <h2>2. Node-Link Design Description</h2>
+    <p>
+        <strong>Node encodings:</strong><br>
+        • <strong>district</strong> → node color<br>
+        • <strong>daily_passengers</strong> → node size<br>
+        • <strong>station_type</strong> → node border style
+    </p>
+    <p>
+        <strong>Link encodings:</strong><br>
+        • <strong>travel_time_min</strong> → link width<br>
+        • <strong>route_type</strong> → link color and dash pattern
+    </p>
+    <p>
+        <strong>Interactions:</strong><br>
+        • <strong>Dragging</strong> — allows the user to reposition nodes and explore alternative layouts.<br>
+        • <strong>Hover highlighting</strong> — hovering over a node highlights it and its direct neighbors, dimming all other nodes and links.<br>
+        • <strong>Tooltips</strong> — hovering over a node displays its full details: name, district, daily passengers, and station type.
+    </p>
+</div>
+
+<h2>3. Adjacency Matrix</h2>
+
+<div class="matrix-container">
+    <div id="matrix"></div>
+</div>
+
+<div class="design-section">
+    <h2>4. Matrix Design Description</h2>
+    <p>
+        <strong>Matrix encodings:</strong><br>
+        • <strong>row / column</strong> → station<br>
+        • <strong>filled cell</strong> → direct connection between two stations<br>
+        • <strong>cell color</strong> → route type<br>
+        • <strong>cell opacity</strong> → travel time<br>
+        • <strong>label color</strong> → district
+    </p>
+    <p>
+        <strong>Ordering:</strong> Stations are sorted by district so that within-district connections
+        form visible blocks along the diagonal. This makes it easier to see whether stations tend to
+        connect within their own district or across districts.
+    </p>
+</div>
+
+<h2>5. Network Questions and Findings</h2>
+
+<table class="question-table">
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Best View</th>
+            <th>Encoding / Interaction</th>
+            <th>Answer / Observation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1. Which stations appear central in the network?</td>
+            <td>Node-link</td>
+            <td>Node position + hover highlighting</td>
+            <td>Stations in the Central district tend to appear near the middle of the force layout and have many visible connections, suggesting they are the most central.</td>
+        </tr>
+        <tr>
+            <td>2. Which districts are strongly connected to one another?</td>
+            <td>Adjacency matrix</td>
+            <td>Block patterns + cell color</td>
+            <td>The matrix shows dense blocks along the diagonal for each district, but also off-diagonal cells linking adjacent districts.</td>
+        </tr>
+        <tr>
+            <td>3. Where are transfer or terminal stations located in the topology?</td>
+            <td>Node-link</td>
+            <td>Node border style</td>
+            <td>Transfer stations tend to be positioned between districts, acting as bridges. Terminal stations appear at the periphery.</td>
+        </tr>
+        <tr>
+            <td>4. Which stations have high passenger volume?</td>
+            <td>Node-link</td>
+            <td>Node size</td>
+            <td>The largest nodes are concentrated in the Central district and at transfer points, indicating high daily passenger volume.</td>
+        </tr>
+        <tr>
+            <td>5. Where are the longest direct travel-time connections?</td>
+            <td>Both</td>
+            <td>Link width + cell opacity</td>
+            <td>The thickest links in the node-link view and the darkest cells in the matrix correspond to longer travel times, mostly between peripheral districts.</td>
+        </tr>
+        <tr>
+            <td>6. Are particular route types concentrated in particular parts of the network?</td>
+            <td>Adjacency matrix</td>
+            <td>Cell color</td>
+            <td>Metro routes dominate the Central district, while Shuttle routes are more common in the outer districts. Express routes appear between districts.</td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="lab5.js"></script>
 
 </body>
-
 </html>
