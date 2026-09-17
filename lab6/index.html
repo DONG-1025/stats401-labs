@@ -1,34 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab </title>
+    <title>Lab 6 - Hierarchical Data Visualization</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .tooltip {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            background: white;
+            border: 1px solid #aaa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 100;
+            max-width: 250px;
+        }
+        .viz-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        .legend-box {
+            display: inline-block;
+            margin: 10px 20px 10px 0;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        .legend-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 4px 0;
+            font-size: 13px;
+        }
+        .legend-item span {
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .design-section {
+            background: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+        .tree-node {
+            cursor: pointer;
+        }
+        .tree-node:hover circle {
+            stroke: #e74c3c;
+            stroke-width: 3;
+        }
+    </style>
 </head>
-
 <body>
 
-    <nav class="lab-nav">
-        <a href="../lab1/index.html">Lab 1</a>
-        <a href="../lab2/index.html">Lab 2</a>
-        <a href="../lab3/index.html">Lab 3</a>
-        <a href="../lab4/index.html">Lab 4</a>
-        <a href="../lab5/index.html">Lab 5</a>
-        <a href="../lab6/index.html">Lab 6</a>
-        <a href="../lab7/index.html">Lab 7</a>
-        <a href="../lab8/index.html">Lab 8</a>
-        <a href="../lab9/index.html">Lab 9</a>
-        <a href="../lab10/index.html">Lab 10</a>
-    </nav>
+<nav class="lab-nav">
+    <a href="../lab1/index.html">Lab 1</a>
+    <a href="../lab2/index.html">Lab 2</a>
+    <a href="../lab3/index.html">Lab 3</a>
+    <a href="../lab4/index.html">Lab 4</a>
+    <a href="../lab5/index.html">Lab 5</a>
+    <a href="../lab6/index.html">Lab 6</a>
+    <a href="../lab7/index.html">Lab 7</a>
+    <a href="../lab8/index.html">Lab 8</a>
+    <a href="../lab9/index.html">Lab 9</a>
+    <a href="../lab10/index.html">Lab 10</a>
+</nav>
 
-    <a href="../index.html">← Back to Home</a>
+<a href="../index.html">← Back to Home</a>
 
-    <h1>Lab 6</h1>
+<h1>Lab 6: Hierarchical Data Visualization</h1>
 
-    <p>Lab 6 will be added here.</p>
+<p>
+    This page presents hierarchical GDP data (Continent → Area → Country) using
+    a node-link tree and two treemaps with different segmentation methods.
+</p>
+
+<div class="design-section">
+    <h2>Dataset Description</h2>
+    <p>
+        <strong>Dataset:</strong> Synthetic Global GDP Hierarchy<br>
+        <strong>Levels:</strong> World → Continent → Area → Country<br>
+        <strong>Countries:</strong> 30<br>
+        <strong>Variables:</strong> gdp_billion_usd (quantitative), gdp_status (categorical: Increase, Unchanged, Decrease)
+    </p>
+</div>
+
+<h2>1. Node-Link Tree</h2>
+<p>Click a node to expand or collapse its children.</p>
+
+<div class="viz-container">
+    <div id="tree"></div>
+</div>
+
+<h2>2. Treemap (Squarify)</h2>
+<p>Rectangle area = GDP amount; Rectangle color = GDP status.</p>
+
+<div class="viz-container">
+    <div id="treemap-squarify"></div>
+</div>
+
+<h2>3. Treemap (Binary)</h2>
+<p>Same data, different segmentation strategy.</p>
+
+<div class="viz-container">
+    <div id="treemap-binary"></div>
+</div>
+
+<h2>4. Legend</h2>
+<div>
+    <div class="legend-box">
+        <h4>GDP Status</h4>
+        <div class="legend-item"><span style="width:16px;height:16px;background:#27ae60;border-radius:3px;"></span>Increase</div>
+        <div class="legend-item"><span style="width:16px;height:16px;background:#f39c12;border-radius:3px;"></span>Unchanged</div>
+        <div class="legend-item"><span style="width:16px;height:16px;background:#e74c3c;border-radius:3px;"></span>Decrease</div>
+    </div>
+</div>
+
+<div class="design-section">
+    <h2>5. Design Description</h2>
+    <p>
+        <strong>Visual channels:</strong><br>
+        • <strong>GDP amount</strong> → rectangle area in treemaps, and node depth position in the tree.<br>
+        • <strong>GDP status</strong> → color.<br>
+        • <strong>Hierarchy</strong> → spatial nesting in treemaps; branch structure in the tree.
+    </p>
+    <p>
+        <strong>Why these channels:</strong> Rectangle area is a natural encoding for a quantitative
+        value like GDP because area comparisons are intuitive. Color is well-suited to a small
+        categorical variable, allowing viewers to spot patterns like clusters
+        of decreasing GDP within a region.
+    </p>
+    <p>
+        <strong>Comparing the two treemap methods:</strong> The <em>squarify</em> layout produces
+        rectangles with aspect ratios closer to squares, making labels easier to read and overall
+        structure cleaner. The <em>binary</em> layout recursively splits space into two groups,
+        which often produces longer, thinner rectangles but can reveal grouping patterns more
+        strongly. Both use the same data and coloring, so the difference is purely spatial.
+    </p>
+</div>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="lab6.js"></script>
 
 </body>
-
 </html>

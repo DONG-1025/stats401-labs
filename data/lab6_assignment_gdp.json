@@ -1,0 +1,255 @@
+{
+  "name": "World",
+  "children": [
+    {
+      "name": "Asia",
+      "children": [
+        {
+          "name": "East Asia",
+          "children": [
+            {
+              "name": "China",
+              "gdp": 17960,
+              "status": "Increase"
+            },
+            {
+              "name": "Japan",
+              "gdp": 4210,
+              "status": "Decrease"
+            },
+            {
+              "name": "South Korea",
+              "gdp": 1710,
+              "status": "Increase"
+            }
+          ]
+        },
+        {
+          "name": "Southeast Asia",
+          "children": [
+            {
+              "name": "Indonesia",
+              "gdp": 1310,
+              "status": "Increase"
+            },
+            {
+              "name": "Thailand",
+              "gdp": 510,
+              "status": "Unchanged"
+            }
+          ]
+        },
+        {
+          "name": "South Asia",
+          "children": [
+            {
+              "name": "India",
+              "gdp": 3730,
+              "status": "Increase"
+            },
+            {
+              "name": "Pakistan",
+              "gdp": 340,
+              "status": "Decrease"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Europe",
+      "children": [
+        {
+          "name": "Western Europe",
+          "children": [
+            {
+              "name": "Germany",
+              "gdp": 4590,
+              "status": "Unchanged"
+            },
+            {
+              "name": "France",
+              "gdp": 3050,
+              "status": "Decrease"
+            },
+            {
+              "name": "United Kingdom",
+              "gdp": 3340,
+              "status": "Decrease"
+            }
+          ]
+        },
+        {
+          "name": "Northern Europe",
+          "children": [
+            {
+              "name": "Sweden",
+              "gdp": 620,
+              "status": "Increase"
+            },
+            {
+              "name": "Norway",
+              "gdp": 480,
+              "status": "Increase"
+            }
+          ]
+        },
+        {
+          "name": "Southern Europe",
+          "children": [
+            {
+              "name": "Italy",
+              "gdp": 2170,
+              "status": "Decrease"
+            },
+            {
+              "name": "Spain",
+              "gdp": 1590,
+              "status": "Increase"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "North America",
+      "children": [
+        {
+          "name": "Northern America",
+          "children": [
+            {
+              "name": "United States",
+              "gdp": 26950,
+              "status": "Increase"
+            },
+            {
+              "name": "Canada",
+              "gdp": 2140,
+              "status": "Increase"
+            }
+          ]
+        },
+        {
+          "name": "Central America",
+          "children": [
+            {
+              "name": "Mexico",
+              "gdp": 1790,
+              "status": "Unchanged"
+            },
+            {
+              "name": "Guatemala",
+              "gdp": 95,
+              "status": "Increase"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "South America",
+      "children": [
+        {
+          "name": "Andean States",
+          "children": [
+            {
+              "name": "Brazil",
+              "gdp": 2330,
+              "status": "Unchanged"
+            },
+            {
+              "name": "Argentina",
+              "gdp": 640,
+              "status": "Decrease"
+            },
+            {
+              "name": "Colombia",
+              "gdp": 360,
+              "status": "Increase"
+            }
+          ]
+        },
+        {
+          "name": "Southern Cone",
+          "children": [
+            {
+              "name": "Chile",
+              "gdp": 340,
+              "status": "Increase"
+            },
+            {
+              "name": "Peru",
+              "gdp": 270,
+              "status": "Increase"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Africa",
+      "children": [
+        {
+          "name": "North Africa",
+          "children": [
+            {
+              "name": "Egypt",
+              "gdp": 400,
+              "status": "Increase"
+            },
+            {
+              "name": "Nigeria",
+              "gdp": 510,
+              "status": "Unchanged"
+            }
+          ]
+        },
+        {
+          "name": "Sub-Saharan Africa",
+          "children": [
+            {
+              "name": "South Africa",
+              "gdp": 420,
+              "status": "Decrease"
+            },
+            {
+              "name": "Kenya",
+              "gdp": 120,
+              "status": "Increase"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oceania",
+      "children": [
+        {
+          "name": "Australia and New Zealand",
+          "children": [
+            {
+              "name": "Australia",
+              "gdp": 1720,
+              "status": "Increase"
+            },
+            {
+              "name": "New Zealand",
+              "gdp": 250,
+              "status": "Increase"
+            }
+          ]
+        },
+        {
+          "name": "Melanesia",
+          "children": [
+            {
+              "name": "Papua New Guinea",
+              "gdp": 30,
+              "status": "Unchanged"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+continent,area,country,gdp_billion_usd,gdp_status
+Asia,East Asia,China,17960,Increase
+Asia,East Asia,Japan,4210,Decrease
+Asia,East Asia,South Korea,1710,Increase
+Asia,Southeast Asia,Indonesia,1310,Increase
+Asia,Southeast Asia,Thailand,510,Unchanged
+Asia,South Asia,India,3730,Increase
+Asia,South Asia,Pakistan,340,Decrease
+Europe,Western Europe,Germany,4590,Unchanged
+Europe,Western Europe,France,3050,Decrease
+Europe,Western Europe,United Kingdom,3340,Decrease
+Europe,Northern Europe,Sweden,620,Increase
+Europe,Northern Europe,Norway,480,Increase
+Europe,Southern Europe,Italy,2170,Decrease
+Europe,Southern Europe,Spain,1590,Increase
+North America,Northern America,United States,26950,Increase
+North America,Northern America,Canada,2140,Increase
+North America,Central America,Mexico,1790,Unchanged
+North America,Central America,Guatemala,95,Increase
+South America,Andean States,Brazil,2330,Unchanged
+South America,Andean States,Argentina,640,Decrease
+South America,Andean States,Colombia,360,Increase
+South America,Southern Cone,Chile,340,Increase
+South America,Southern Cone,Peru,270,Increase
+Africa,North Africa,Egypt,400,Increase
+Africa,North Africa,Nigeria,510,Unchanged
+Africa,Sub-Saharan Africa,South Africa,420,Decrease
+Africa,Sub-Saharan Africa,Kenya,120,Increase
+Oceania,Australia and New Zealand,Australia,1720,Increase
+Oceania,Australia and New Zealand,New Zealand,250,Increase
+Oceania,Melanesia,Papua New Guinea,30,Unchanged
