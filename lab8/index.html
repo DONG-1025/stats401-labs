@@ -1,34 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 8</title>
+    <title>Lab 8 - Web Text Data and Visualization</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .tooltip {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            background: white;
+            border: 1px solid #aaa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 100;
+            max-width: 320px;
+        }
+        .viz-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .controls input,
+        .controls select {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        #detail-panel {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            min-height: 100px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        #detail-panel h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .design-section {
+            background: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+        .matrix-cell {
+            stroke: #fff;
+            stroke-width: 1;
+        }
+        .matrix-cell:hover {
+            stroke: #2c3e50;
+            stroke-width: 2;
+        }
+    </style>
 </head>
-
 <body>
 
-    <nav class="lab-nav">
-        <a href="../lab1/index.html">Lab 1</a>
-        <a href="../lab2/index.html">Lab 2</a>
-        <a href="../lab3/index.html">Lab 3</a>
-        <a href="../lab4/index.html">Lab 4</a>
-        <a href="../lab5/index.html">Lab 5</a>
-        <a href="../lab6/index.html">Lab 6</a>
-        <a href="../lab7/index.html">Lab 7</a>
-        <a href="../lab8/index.html">Lab 8</a>
-        <a href="../lab9/index.html">Lab 9</a>
-        <a href="../lab10/index.html">Lab 10</a>
-    </nav>
+<nav class="lab-nav">
+    <a href="../lab1/index.html">Lab 1</a>
+    <a href="../lab2/index.html">Lab 2</a>
+    <a href="../lab3/index.html">Lab 3</a>
+    <a href="../lab4/index.html">Lab 4</a>
+    <a href="../lab5/index.html">Lab 5</a>
+    <a href="../lab6/index.html">Lab 6</a>
+    <a href="../lab7/index.html">Lab 7</a>
+    <a href="../lab8/index.html">Lab 8</a>
+    <a href="../lab9/index.html">Lab 9</a>
+    <a href="../lab10/index.html">Lab 10</a>
+</nav>
 
-    <a href="../index.html">← Back to Home</a>
+<a href="../index.html">← Back to Home</a>
 
-    <h1>Lab 8</h1>
+<h1>Lab 8: Web Text Data and Visualization</h1>
 
-    <p>Lab 8 will be added here.</p>
+<p>
+    This page presents an interactive exploration system for the DKU Undergraduate Bulletin.
+    It coordinates a semantic embedding map with a Topic × Section matrix.
+</p>
+
+<div class="design-section">
+    <h2>Corpus Description</h2>
+    <p>
+        <strong>Document:</strong> DKU Undergraduate Bulletin (V2021-22)<br>
+        <strong>Source:</strong> Duke Kunshan University<br>
+        <strong>Unit of analysis:</strong> One paragraph / policy block = one passage<br>
+        <strong>Embedding model:</strong> all-MiniLM-L6-v2<br>
+        <strong>Dimensionality reduction:</strong> UMAP (n_neighbors=15, min_dist=0.15, metric=cosine)<br>
+        <strong>Clustering:</strong> KMeans (k=8)
+    </p>
+</div>
+
+<h2>1. Semantic Embedding Map</h2>
+
+<div class="controls">
+    <input type="text" id="search" placeholder="Search bulletin..." style="flex:1; max-width:400px;">
+    <select id="section-filter">
+        <option value="">All Sections</option>
+    </select>
+    <select id="topic-filter">
+        <option value="">All Topics</option>
+    </select>
+</div>
+
+<div class="viz-container">
+    <div id="semantic-map"></div>
+</div>
+
+<div id="detail-panel">
+    <p style="color:#999;">Click a point to see passage details.</p>
+</div>
+
+<h2>2. Topic × Bulletin Section Matrix</h2>
+
+<div class="viz-container">
+    <div id="matrix"></div>
+</div>
+
+<div class="design-section">
+    <h2>Design Description</h2>
+    <p>
+        <strong>Embeddings:</strong> Each passage is encoded with a sentence transformer
+        (all-MiniLM-L6-v2), producing a high-dimensional semantic vector. UMAP projects
+        these vectors to 2D so that nearby points tend to be semantically similar.<br><br>
+
+        <strong>Topics:</strong> KMeans clustering groups passages by embedding similarity.
+        Each cluster is labeled using its top TF-IDF terms and representative passages.<br><br>
+
+        <strong>Visual encodings:</strong><br>
+        • Semantic map: x/y = UMAP coordinates; color = semantic topic; size = passage length.<br>
+        • Matrix: rows = bulletin sections; columns = semantic topics; cell color = passage count.<br><br>
+
+        <strong>Coordinated interaction:</strong> Clicking a matrix cell highlights the
+        corresponding passages in the semantic map. Conversely, selecting a point in
+        the map highlights its cell in the matrix.
+    </p>
+</div>
+
+<div class="design-section">
+    <h2>Findings</h2>
+    <ol>
+        <li><strong>Major semantic topics:</strong> Clusters correspond to registration, degree requirements, academic integrity, graduation, study away, and student support.</li>
+        <li><strong>Topics across sections:</strong> "Credit" and "requirements" appear in both Degree Requirements and Transfer Credits sections.</li>
+        <li><strong>Most diverse sections:</strong> Academic Policies contains passages from many different clusters.</li>
+        <li><strong>Similar passages across sections:</strong> Passages about graduation requirements in Degree Requirements and Graduation sections cluster together.</li>
+    </ol>
+</div>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="lab8.js"></script>
 
 </body>
-
 </html>
