@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bab5b6a0-09cb-40d5-be7e-16494df4d53e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/lab8/lab8.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab8/process_bulletin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/lab9_gdp_2025_top50.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab9/lab9.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab8/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab8/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab9/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lab9/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +57,11 @@
     &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\HuaweiMoveData\Users\Renaty051025\Desktop\STATS 401 Individual Project" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

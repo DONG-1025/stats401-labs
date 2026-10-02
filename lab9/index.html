@@ -1,34 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 9</title>
+    <title>Lab 9 - Geospatial Visualization</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .tooltip {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            background: white;
+            border: 1px solid #aaa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 100;
+        }
+        .map-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .map-box {
+            flex: 1;
+            min-width: 500px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .map-box h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .design-section {
+            background: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+    </style>
 </head>
-
 <body>
 
-    <nav class="lab-nav">
-        <a href="../lab1/index.html">Lab 1</a>
-        <a href="../lab2/index.html">Lab 2</a>
-        <a href="../lab3/index.html">Lab 3</a>
-        <a href="../lab4/index.html">Lab 4</a>
-        <a href="../lab5/index.html">Lab 5</a>
-        <a href="../lab6/index.html">Lab 6</a>
-        <a href="../lab7/index.html">Lab 7</a>
-        <a href="../lab8/index.html">Lab 8</a>
-        <a href="../lab9/index.html">Lab 9</a>
-        <a href="../lab10/index.html">Lab 10</a>
-    </nav>
+<nav class="lab-nav">
+    <a href="../lab1/index.html">Lab 1</a>
+    <a href="../lab2/index.html">Lab 2</a>
+    <a href="../lab3/index.html">Lab 3</a>
+    <a href="../lab4/index.html">Lab 4</a>
+    <a href="../lab5/index.html">Lab 5</a>
+    <a href="../lab6/index.html">Lab 6</a>
+    <a href="../lab7/index.html">Lab 7</a>
+    <a href="../lab8/index.html">Lab 8</a>
+    <a href="../lab9/index.html">Lab 9</a>
+    <a href="../lab10/index.html">Lab 10</a>
+</nav>
 
-    <a href="../index.html">← Back to Home</a>
+<a href="../index.html">← Back to Home</a>
 
-    <h1>Lab 9</h1>
+<h1>Lab 9: Geospatial Visualization with D3</h1>
 
-    <p>Lab 9 will be added here.</p>
+<p>
+    This page presents two coordinated visualizations of 2025 nominal GDP:
+    a choropleth map and a cartogram.
+</p>
+
+<div class="design-section">
+    <h2>Dataset Description</h2>
+    <p>
+        <strong>Data source:</strong> IMF World Economic Outlook, October 2025<br>
+        <strong>Variable:</strong> 2025 nominal GDP (billions of USD)<br>
+        <strong>Countries shown:</strong> Top 50 economies<br>
+        <strong>Geographic boundaries:</strong> Natural Earth (via DataHub.io)<br>
+        <strong>Projection:</strong> Natural Earth 1<br>
+        <strong>Color scale:</strong> Log-scaled blue sequential (due to GDP skew)
+    </p>
+</div>
+
+<div class="map-container">
+    <div class="map-box">
+        <h2>Choropleth Map</h2>
+        <p style="text-align:center; font-size:14px; color:#666;">
+            Color represents 2025 GDP. Geographic area is preserved.
+        </p>
+        <div id="choropleth"></div>
+    </div>
+    <div class="map-box">
+        <h2>Cartogram</h2>
+        <p style="text-align:center; font-size:14px; color:#666;">
+            Circle area represents 2025 GDP.
+        </p>
+        <div id="cartogram"></div>
+    </div>
+</div>
+
+<div class="design-section">
+    <h2>Design and Comparison</h2>
+    <p>
+        The <strong>choropleth</strong> preserves true geographic shapes and positions,
+        making it easier to locate countries and recognize familiar borders. GDP is
+        encoded through a logarithmic blue color scale because the raw values are
+        extremely skewed, and a linear scale would make
+        most countries appear nearly identical. Countries without GDP data are shown
+        in light grey as missing, not zero.
+    </p>
+    <p>
+        The <strong>cartogram</strong> uses the same GDP values but encodes them by
+        <em>area</em> instead of color. Each country is represented by a circle whose
+        area is proportional to GDP. Large economies such as the United States, China,
+        and Germany appear visually dominant, while small economies shrink. The trade-off
+        is that geographic shapes are replaced by circles, but global economic magnitude
+        becomes immediately visible.
+    </p>
+    <p>
+        <strong>Linked highlighting</strong> connects the two views: hovering over a
+        country in either map highlights the same country in the other, helping users
+        maintain correspondence between the two representations.
+    </p>
+    <p>
+        <strong>Task suitability:</strong> The choropleth is best for geographic questions
+        (where is a country, what are regional patterns). The cartogram is best for
+        magnitude questions (who has the largest economy, how do sizes compare). Neither
+        is universally better — the choice depends on the analytical task.
+    </p>
+</div>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="lab9.js"></script>
 
 </body>
-
 </html>
