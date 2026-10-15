@@ -1,34 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 10</title>
+    <title>Lab 10 - Novel Interaction with Visualizations</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .tooltip {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            background: white;
+            border: 1px solid #aaa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 100;
+        }
+        .map-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .map-box {
+            flex: 1;
+            min-width: 500px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .map-box h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .design-section {
+            background: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+        .voice-control-panel {
+            background: #eaf4fc;
+            border: 1px solid #b8d8ee;
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .voice-control-panel h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .voice-control-panel button {
+            padding: 10px 22px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+        .voice-control-panel button:hover {
+            background: #2980b9;
+        }
+        .voice-control-panel button.listening {
+            background: #e74c3c;
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+        #voice-status {
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 8px 0;
+        }
+        #voice-feedback {
+            font-size: 13px;
+            color: #555;
+            margin: 5px 0;
+        }
+        .voice-hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-
 <body>
 
-    <nav class="lab-nav">
-        <a href="../lab1/index.html">Lab 1</a>
-        <a href="../lab2/index.html">Lab 2</a>
-        <a href="../lab3/index.html">Lab 3</a>
-        <a href="../lab4/index.html">Lab 4</a>
-        <a href="../lab5/index.html">Lab 5</a>
-        <a href="../lab6/index.html">Lab 6</a>
-        <a href="../lab7/index.html">Lab 7</a>
-        <a href="../lab8/index.html">Lab 8</a>
-        <a href="../lab9/index.html">Lab 9</a>
-        <a href="../lab10/index.html">Lab 10</a>
-    </nav>
+<nav class="lab-nav">
+    <a href="../lab1/index.html">Lab 1</a>
+    <a href="../lab2/index.html">Lab 2</a>
+    <a href="../lab3/index.html">Lab 3</a>
+    <a href="../lab4/index.html">Lab 4</a>
+    <a href="../lab5/index.html">Lab 5</a>
+    <a href="../lab6/index.html">Lab 6</a>
+    <a href="../lab7/index.html">Lab 7</a>
+    <a href="../lab8/index.html">Lab 8</a>
+    <a href="../lab9/index.html">Lab 9</a>
+    <a href="../lab10/index.html">Lab 10</a>
+</nav>
 
-    <a href="../index.html">← Back to Home</a>
+<a href="../index.html">← Back to Home</a>
 
-    <h1>Lab 10</h1>
+<h1>Lab 10: Novel Interaction with Visualizations</h1>
 
-    <p>Lab 10 will be added here.</p>
+<p>
+    This page extends the Lab 9 geospatial visualization (choropleth + cartogram of 2025 GDP)
+    with <strong>voice interaction</strong> using the browser's Web Speech API.
+</p>
+
+<div class="voice-control-panel">
+    <h3>🎙️ Voice Control</h3>
+    <button id="voice-button">🎤 Start Voice Control</button>
+    <p id="voice-status">Voice control inactive</p>
+    <p id="voice-feedback"></p>
+    <p class="voice-hint">
+        Try saying: "Highlight China" · "Highlight Japan" · "Show United States" · "Reset"
+    </p>
+</div>
+
+<div class="map-container">
+    <div class="map-box">
+        <h2>Choropleth Map</h2>
+        <p style="text-align:center; font-size:14px; color:#666;">
+            Color represents 2025 GDP. Geographic area is preserved.
+        </p>
+        <div id="choropleth"></div>
+    </div>
+    <div class="map-box">
+        <h2>Cartogram</h2>
+        <p style="text-align:center; font-size:14px; color:#666;">
+            Circle area represents 2025 GDP.
+        </p>
+        <div id="cartogram"></div>
+    </div>
+</div>
+
+<div class="design-section">
+    <h2>Novel Interaction: Design Reflection</h2>
+    <p>
+        I extended the Lab 9 geospatial visualization (choropleth + cartogram of 2025 GDP)
+        with <strong>voice interaction</strong> using the browser's Web Speech API.
+        Users can say commands such as <em>"Highlight China"</em>, <em>"Highlight Japan"</em>,
+        or <em>"Reset"</em> to select and clear country highlights across both maps.
+    </p>
+    <p>
+        Voice is appropriate here because the map contains many small countries that are
+        difficult to click precisely, especially after zooming. Voice lets users jump
+        directly to a named country without hunting for its shape. The interaction is
+        also naturally paired with the existing linked-highlighting feature — when a
+        country is named, both the choropleth and the cartogram update simultaneously.
+    </p>
+    <p>
+        <strong>Feedback:</strong> The interface shows what was heard ("Heard: highlight china"),
+        what action was taken ("Action: Highlighting china"), and offers suggestions if the
+        command is not recognized. Conventional mouse controls remain fully functional as
+        a fallback, and the microphone only activates after an explicit button click.
+    </p>
+    <p>
+        <strong>Limitations:</strong> Speech recognition can mishear accented speech or
+        country names, and it is not supported in all browsers. Future improvements could
+        include fuzzy matching and additional languages.
+    </p>
+</div>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="lab10.js"></script>
 
 </body>
-
 </html>
